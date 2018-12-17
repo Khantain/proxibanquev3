@@ -50,14 +50,14 @@ public class IndexServlet extends HttpServlet {
 			if (client == null) {
 				client = ClientService.getInstance().read(lastname, firstname);
 			}
-
+			// on entre dans le if si les deux recherches ont échoué.
 			if (client == null) {
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorPerson.jsp").forward(req, resp);
 			}
 
 			req.getSession().setAttribute("client", client);
-			//redirect vers board.html
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/board.jsp").forward(req, resp);
+			// redirect vers board.html
+			resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 
 		} else {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorPerson.jsp").forward(req, resp);

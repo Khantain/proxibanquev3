@@ -25,6 +25,16 @@
 		<url-pattern>/disconnect.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>BoardServlet</servlet-name>
+		<servlet-class>fr.formation.proxi3.presentation.BoardServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BoardServlet</servlet-name>
+		<url-pattern>/board.html</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>
