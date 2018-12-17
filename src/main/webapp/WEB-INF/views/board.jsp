@@ -47,6 +47,11 @@
 		</div>
 		
 	</header>
+	<div class="transfer-button">
+					<a href="transfer.html?id=${sessionScope.client.id}">
+						<button class="button">Faire un virement</button>
+					</a>
+				</div>
 		<div class="account-list">
 				<div class="left-list">
 				<h2>Liste des comptes courant </h2>
@@ -58,17 +63,42 @@
 					<tr>
 						<th> Numero de compte </th>
 						<th class="balance"> Solde en &#8364</th>
+						<th class="balance"> Date d'ouverture</th>
+						<th class="balance"> </th>
+						<th class="balance"> </th>
+						<th class="balance"> </th>
 					</tr>
 					<c:forEach var="currentAccount" items="${currentAccounts }">
 						<tr class="data">
+					<!-- 	<td>
+							<input type="radio" id="${currentAccount.id}" name="compteADebiter" value="${currentAccount.id}">
+							<label for="${currentAccount.id}">n°${currentAccount.number}</label>
+						</td>  -->
 							<td>${currentAccount.number}</td>
 							<td class="balance">${currentAccount.balance}</td>
+							<td class="balance">${currentAccount.openDate}</td>
+								<td class="balance">
+									<a href="retrait.html?id=${currentAccount.id}">
+										<button class="button">Retrait</button>
+									</a>
+								</td>
+								<td class="balance">
+									<a href="checkbook.html?id=${currentAccount.id}">
+										<button class="button">Demande chéquier</button>
+									</a>
+								</td>
+								<td class="balance">
+									<a href="checkbook.html?id=${currentAccount.id}">
+										<button class="button">Demande CB</button>
+									</a>
+								</td>
 						</tr>
 					</c:forEach>
 					</table>
 					</c:if>
 				</div>
 				<div class="right-list">
+				
 					<h2>Liste des comptes epargne</h2>
 					<c:if test="${empty savingAccounts}">
 					<h4> Aucun compte associé à ce client.</h4>
@@ -78,17 +108,36 @@
 					<tr>
 						<th> Numero de compte </th>
 						<th class="balance"> Solde en &#8364</th>
+						<th class="balance"> Date d'ouverture</th>
+						<th class="balance"> </th>
+						<th class="balance"> </th>
 					</tr>
 						<c:forEach var="savingAccount" items="${savingAccounts }">
 							<tr class="data">
 								<td>${savingAccount.number}</td>
 								<td class="balance">${savingAccount.balance}</td>
+								<td class="balance">${savingAccount.openDate}</td>
+								<td class="balance">
+									<a href="checkbook.html?id=${savingAccount.id}">
+										<button class="button">Demande chéquier</button>
+									</a>
+								</td>
+								<td class="balance">
+									<a href="checkbook.html?id=${savingAccount.id}">
+										<button class="button">Demande CB</button>
+									</a>
+								</td>
+								
 							</tr>
 						</c:forEach>
 					</table>
 					</c:if>
 				</div>
 			</div>
-
+	<div class="footer-button">
+			<a href="index.html">
+				<button class="button">Retour à l'accueil</button>
+			</a>
+		</div>
 </body>
 </html>
