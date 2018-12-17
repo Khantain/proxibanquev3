@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/** CLasse représentant une carte bancaire.
+ * @author Adminl
+ *
+ */
 @Entity
 public class BankCard {
 	

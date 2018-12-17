@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/** Classe représentant un client de la banque.
+ * @author Adminl
+ *
+ */
 @Entity
 @Table(name = "client")
 public class Client {

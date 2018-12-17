@@ -1,5 +1,9 @@
 package fr.formation.proxi3.persistence;
 
+/** Classe rassemblant les requetes JPQL utilisees par le coucher persistence de l'application.
+ * @author Adminl
+ *
+ */
 public class JpqlQueries {
 	
 	public static final String SELECT_ALL_CHECKBOOKS = "";
