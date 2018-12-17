@@ -37,4 +37,54 @@ public abstract class Account {
 	@JoinColumn(name="checkbook")
 	private CheckBook checkbook;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getOpenDate() {
+		return openDate;
+	}
+
+	public void setOpenDate(String openDate) {
+		this.openDate = openDate;
+	}
+
+	public CheckBook getCheckbook() {
+		return checkbook;
+	}
+
+	public void setCheckbook(CheckBook checkbook) {
+		this.checkbook = checkbook;
+	}
+
+	
+	
 }

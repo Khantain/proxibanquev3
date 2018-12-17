@@ -46,9 +46,11 @@ public class IndexServlet extends HttpServlet {
 			}
 
 			Client client = ClientService.getInstance().read(firstname, lastname);
+			System.out.println(client);
 			// recherche du client en inversant prenom et nom.
 			if (client == null) {
 				client = ClientService.getInstance().read(lastname, firstname);
+				System.out.println(client);
 			}
 			// on entre dans le if si les deux recherches ont échoué.
 			if (client == null) {

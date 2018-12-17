@@ -14,4 +14,14 @@ public class CurrentAccount extends Account {
 	@JoinColumn(name="bankcard")
 	private BankCard bankCard;
 
+	public BankCard getBankCard() {
+		return bankCard;
+	}
+
+	public void setBankCard(BankCard bankCard) {
+		this.bankCard = bankCard;
+	}
+
+	
+	
 }

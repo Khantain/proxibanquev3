@@ -35,6 +35,7 @@
 </head>
 
 <body id="page-top">
+<jsp:include page="deco_name.jsp" />
 
 	<!-- Header -->
 	<header class="masthead">

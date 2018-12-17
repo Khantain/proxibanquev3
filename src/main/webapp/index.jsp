@@ -66,7 +66,7 @@
 		</form>
 	</div>
 	
-
+	
 	<!-- Footer -->
 	<footer>
 		<div class="container">
@@ -97,6 +97,7 @@
 
 	<!-- Custom scripts for this template -->
 	<script src="js/agency.min.js"></script>
+
 
 </body>
 

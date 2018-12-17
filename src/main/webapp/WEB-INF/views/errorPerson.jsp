@@ -35,13 +35,7 @@
 </head>
 
 <body id="page-top">
-
-	<!-- ATTENTION CHANGER LE LIEN !!!!!! -->
-	<span> <a href="/proxibanquev3/disconnect.html">Deconnexion</a></span>
-	
-	
-	
-	
+<jsp:include page="deco_name.jsp" />
 	
 	<!-- Header -->
 	<header class="masthead">

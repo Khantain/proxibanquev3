@@ -35,7 +35,7 @@
 </head>
 
 <body id="page-top">
-
+<jsp:include page="deco_name.jsp" />
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">
@@ -45,7 +45,50 @@
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
 		</div>
+		
 	</header>
+		<div class="account-list">
+				<div class="left-list">
+				<h2>Liste des comptes courant </h2>
+				<c:if test="${empty currentAccounts}">
+				<h4> Aucun compte associé à ce client.</h4>
+				</c:if>
+				<c:if test="${not empty currentAccounts}">
+					<table>
+					<tr>
+						<th> Numero de compte </th>
+						<th class="balance"> Solde en &#8364</th>
+					</tr>
+					<c:forEach var="currentAccount" items="${currentAccounts }">
+						<tr class="data">
+							<td>${currentAccount.number}</td>
+							<td class="balance">${currentAccount.balance}</td>
+						</tr>
+					</c:forEach>
+					</table>
+					</c:if>
+				</div>
+				<div class="right-list">
+					<h2>Liste des comptes epargne</h2>
+					<c:if test="${empty savingAccounts}">
+					<h4> Aucun compte associé à ce client.</h4>
+					</c:if>
+					<c:if test="${not empty savingAccounts}">
+					<table>
+					<tr>
+						<th> Numero de compte </th>
+						<th class="balance"> Solde en &#8364</th>
+					</tr>
+						<c:forEach var="savingAccount" items="${savingAccounts }">
+							<tr class="data">
+								<td>${savingAccount.number}</td>
+								<td class="balance">${savingAccount.balance}</td>
+							</tr>
+						</c:forEach>
+					</table>
+					</c:if>
+				</div>
+			</div>
 
 </body>
 </html>
