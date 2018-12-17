@@ -3,8 +3,6 @@ package fr.formation.proxi3.presentation;
 import java.io.IOException;
 import java.util.List;
 
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
