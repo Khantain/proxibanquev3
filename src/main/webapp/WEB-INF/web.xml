@@ -45,6 +45,16 @@
 		<url-pattern>/retrait.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>TransferServlet</servlet-name>
+		<servlet-class>fr.formation.proxi3.presentation.TransferServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TransferServlet</servlet-name>
+		<url-pattern>/transfer.html</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>

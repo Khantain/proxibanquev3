@@ -35,18 +35,80 @@
 </head>
 
 <body id="page-top">
-<jsp:include page="deco_name.jsp" />
+	<jsp:include page="deco_name.jsp" />
 
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">
-			<div class="intro-text" style="padding-top: 150px; padding-bottom: 200px;">
+			<div class="intro-text"
+				style="padding-top: 150px; padding-bottom: 200px;">
 				<div class="intro-lead-in">Bienvenue sur le système
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
 		</div>
 	</header>
+
+	<c:if test="${empty accounts}">
+		<h4>Aucun compte associé à ce client.</h4>
+	</c:if>
+	<c:if test="${not empty accounts}">
+		<div class="account-list">
+			<form method="POST" action="">
+				<div class="left-list">
+					<h2>Sélectionner le compte à débiter</h2>
+					<table>
+						<tr>
+							<th>Numero de compte</th>
+							<th class="balance">Solde en &#8364</th>
+							<th class="balance">Date d'ouverture</th>
+						</tr>
+						<c:forEach var="accounts" items="${accounts}">
+							<tr class="data">
+								<td><input type="radio" id="${accounts.id}"
+									name="compteADebiter" value="${accounts.id}"> <label
+									for="${accounts.id}">n°${accounts.number}</label>
+								<td>${accounts.number}</td>
+								<td class="balance">${accounts.balance}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+
+				<div class="right-list">
+					<h2>Sélectionner le compte à débiter</h2>
+					<table>
+						<tr>
+							<th>Numero de compte</th>
+							<th class="balance">Solde en &#8364</th>
+							<th class="balance">Date d'ouverture</th>
+						</tr>
+						<c:forEach var="accounts" items="${accounts}">
+							<tr class="data">
+								<td><input type="radio" id="${accounts.id}"
+									name="compteACrediter" value="${accounts.id}"> <label
+									for="${accounts.id}">n°${accounts.number}</label>
+								<td>${accounts.number}</td>
+								<td class="balance">${accounts.balance}</td>
+							</tr>
+
+						</c:forEach>
+					</table>
+				</div>
+
+				<div class="label-container">
+					<label for="value">Montant à transférer (900 &#8364
+						maximum)</label>
+				</div>
+				<div class="input-container">
+					<input type="number" id="value" name="value" max="900" step=0.01>
+				</div>
+				<div class="buttons">
+					<button class="button">Valider</button>
+				</div>
+			</form>
+		</div>
+	</c:if>
 
 </body>
 </html>

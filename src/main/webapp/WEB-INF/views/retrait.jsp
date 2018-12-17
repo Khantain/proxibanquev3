@@ -68,7 +68,7 @@
 					<label for="value">Montant à débiter (300 &#8364 maximum)</label>
 				</div>
 				<div class="input-container">
-					<input type="text" id="value" name="value">
+					<input type="number" id="value" name="value" max="300" step=0.01>
 				</div>
 
 			</div>
