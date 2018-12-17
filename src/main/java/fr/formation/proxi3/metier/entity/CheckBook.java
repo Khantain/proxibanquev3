@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/** Classe représentant un chéquier.
+ * @author Adminl
+ *
+ */
 @Entity
 @Table(name = "checkbook")
 public class CheckBook {

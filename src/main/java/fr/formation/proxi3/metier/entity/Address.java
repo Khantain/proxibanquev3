@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/** Classe représentant une adresse d'un client de la banque.
+ * @author Adminl
+ *
+ */
 @Entity
 @Table(name="address")
 public class Address {

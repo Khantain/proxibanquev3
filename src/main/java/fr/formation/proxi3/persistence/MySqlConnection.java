@@ -16,7 +16,8 @@ public class MySqlConnection {
 	 */
 	private static final MySqlConnection INSTANCE = new MySqlConnection();
 
-	/**
+	/** Methode permettant de recuperer le singleton.
+	 * 
 	 * @return MysqlConnection l'instance unique (singleton) de connexion BDD.
 	 */
 	public static MySqlConnection getInstance() {

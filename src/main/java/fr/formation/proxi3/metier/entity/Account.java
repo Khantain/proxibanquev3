@@ -11,6 +11,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+/** Classe abstraite représentant un compte en banque générique.
+ * @author Adminl
+ *
+ */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type")

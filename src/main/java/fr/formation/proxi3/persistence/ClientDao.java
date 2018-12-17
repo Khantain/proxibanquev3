@@ -11,7 +11,7 @@ import fr.formation.proxi3.persistence.JpqlQueries;
 import fr.formation.proxi3.metier.entity.Client;
 
 /**
- * Classe regroupant les traitements � effectuer sur les clients. Respecte le
+ * Classe regroupant les traitements a effectuer sur les clients. Respecte le
  * design pattern singleton.
  * 
  * @author Adminl

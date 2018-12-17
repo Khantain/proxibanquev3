@@ -6,6 +6,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
+/** Classe représentant un compte courant. Herite de la classe {@link Account}.
+ * @author Adminl
+ *
+ */
 @Entity
 @DiscriminatorValue(value="current")
 public class CurrentAccount extends Account {
