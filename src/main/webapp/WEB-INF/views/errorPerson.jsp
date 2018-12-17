@@ -36,15 +36,25 @@
 
 <body id="page-top">
 
+	<!-- ATTENTION CHANGER LE LIEN !!!!!! -->
+	<span> <a href="/proxibanquev3/disconnect.html">Deconnexion</a></span>
+	
+	
+	
+	
+	
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">
-			<div class="intro-text" style="padding-top: 150px; padding-bottom: 200px;">
+			<div class="intro-text"
+				style="padding-top: 150px; padding-bottom: 200px;">
 				<div class="intro-lead-in">Bienvenue sur le système
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
 		</div>
 	</header>
+
+	<h1>Erreur. Veuillez vous adresser à un conseiller</h1>
 </body>
 </html>

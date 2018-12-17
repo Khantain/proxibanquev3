@@ -1,5 +1,7 @@
 package fr.formation.proxi3.metier.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ public class BankCard {
 	private Integer id;
 	
 	@Column(name="expriationDate")
-	private String expirationDate;
+	private LocalDate expirationDate;
 	
 	@Column(name="number")
 	private String number;
@@ -32,11 +34,11 @@ public class BankCard {
 		this.id = id;
 	}
 
-	public String getExpirationDate() {
+	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(String expirationDate) {
+	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

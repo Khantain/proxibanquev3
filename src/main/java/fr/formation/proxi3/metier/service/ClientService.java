@@ -2,6 +2,9 @@ package fr.formation.proxi3.metier.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
+
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.service.ClientService;
 import fr.formation.proxi3.persistence.AccountDao;
@@ -41,5 +44,9 @@ public class ClientService {
 	 */
 	public List<Client> getAll() {
 		return this.daoClient.readAll();
+	}
+
+	public Client read(String firstname, String lastname){
+		return this.daoClient.read(firstname, lastname);
 	}
 }

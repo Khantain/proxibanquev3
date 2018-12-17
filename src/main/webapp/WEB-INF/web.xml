@@ -15,6 +15,16 @@
 		<url-pattern>/index.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>DecoServlet</servlet-name>
+		<servlet-class>fr.formation.proxi3.presentation.DecoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DecoServlet</servlet-name>
+		<url-pattern>/disconnect.html</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>
