@@ -35,6 +35,16 @@
 		<url-pattern>/board.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>RetraitServlet</servlet-name>
+		<servlet-class>fr.formation.proxi3.presentation.RetraitServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RetraitServlet</servlet-name>
+		<url-pattern>/retrait.html</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>

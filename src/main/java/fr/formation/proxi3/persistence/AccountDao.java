@@ -27,7 +27,8 @@ private static final AccountDao INSTANCE = new AccountDao();
 	 */
 	@Override
 	public Account read(Integer id) {
-		return null;
+		return this.read(id, new Account()); 
+		
 	}
 
 
@@ -49,13 +50,7 @@ private static final AccountDao INSTANCE = new AccountDao();
 		return null;
 	}
 	
-	/**
-	 * Permet de recuperer l'ensemble des comptes par client.
-	 */
-	public Account update(Account account) {
-		return account;
-		
-	}
+
 
 }
 

@@ -35,18 +35,48 @@
 </head>
 
 <body id="page-top">
-<jsp:include page="deco_name.jsp" />
+	<jsp:include page="deco_name.jsp" />
 
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">
-			<div class="intro-text" style="padding-top: 150px; padding-bottom: 200px;">
+			<div class="intro-text"
+				style="padding-top: 150px; padding-bottom: 200px;">
 				<div class="intro-lead-in">Bienvenue sur le système
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
 		</div>
 	</header>
+	<table>
+		<tr>
+			<th>Numero de compte</th>
+			<th class="balance">Solde en &#8364</th>
 
+		</tr>
+		<tr class="data">
+
+			<td>${account.number}</td>
+			<td class="balance">${account.balance}</td>
+
+		</tr>
+	</table>
+	<div class="form_connection">
+		<form method="post" action="retrait.html?id=${account.id}">
+			<div class="edit-form">
+				<div class="label-container">
+					<label for="value">Montant à débiter (300 &#8364 maximum)</label>
+				</div>
+				<div class="input-container">
+					<input type="text" id="value" name="value">
+				</div>
+
+			</div>
+			<div class="buttons">
+				<button class="button">Valider</button>
+				<button type="reset" class="button">Réinitialiser</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

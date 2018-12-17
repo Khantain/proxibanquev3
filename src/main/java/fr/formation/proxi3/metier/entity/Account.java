@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type")
-public abstract class Account {
+public class Account {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,9 @@ public abstract class Account {
 	@OneToOne
 	@JoinColumn(name="checkbook")
 	private CheckBook checkbook;
+	
+	public Account() {
+	}
 
 	public Integer getId() {
 		return id;
