@@ -52,6 +52,7 @@
 			</div>
 		</div>
 	</header>
+	<div class="account-list" style="margin-right:150px; margin-left:150px">
 	<table>
 		<tr>
 			<th>Numero de compte</th>
@@ -65,11 +66,12 @@
 
 		</tr>
 	</table>
+	</div>
 	<div class="form_connection">
 		<form method="post" action="retrait.html?id=${account.id}">
 			<div class="edit-form">
-				<div class="label-container">
-					<label for="value">Montant à débiter (300 &#8364 maximum)</label>
+				<div class="label-container" style="padding-bottom:20px">
+					<label for="value" >Montant à débiter (300 &#8364 maximum)</label>
 				</div>
 				<div class="input-container">
 					<input type="number" id="value" name="value" max="300" min="0" step=0.01>

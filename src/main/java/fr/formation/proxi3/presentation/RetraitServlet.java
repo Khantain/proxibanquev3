@@ -47,7 +47,9 @@ public class RetraitServlet extends HttpServlet {
 		// appel de la méthode de retrait de AccountService.
 		AccountService.getInstance().makeWithdrawal(id, value);
 		// redirection vers la page principale des comptes.
-		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
+		boolean ok = AccountService.getInstance().makeWithdrawal(id, value);
+		req.setAttribute("bool",ok);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorWithdraw.jsp").forward(req, resp);
 	}
 
 }

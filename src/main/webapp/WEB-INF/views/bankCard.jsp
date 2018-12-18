@@ -37,7 +37,7 @@
 	<jsp:include page="/WEB-INF/views/deco_name.jsp"></jsp:include>
 	<div class="top_left" style="float:left" >
 			<a href="/proxibanquev3/board.html"> 
-			<button class="button"> Accueil</button> </a>
+			<button class="button">Menu</button> </a>
 </div>
 	<section class="head"></section>
 	<h1 class="page-title">Ajout de la carte bancaire pour ${client.firstname} ${client.lastname}</h1>
@@ -59,9 +59,6 @@
 			<button type="reset" class="button">Réinitialiser</button>
 		</div>
 		</form>
-			<a href="index.html">
-				<button class="button">Retour à l'accueil</button>
-			</a>
 		</div>
 	
 </body>

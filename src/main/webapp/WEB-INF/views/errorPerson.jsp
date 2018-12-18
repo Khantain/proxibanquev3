@@ -38,7 +38,7 @@
 <jsp:include page="deco_name.jsp" />
 	<div class="top_left" style="float:left" >
 			<a href="/proxibanquev3/board.html"> 
-			<button class="button"> Accueil</button> </a>
+			<button class="button">Menu</button> </a>
 </div>
 	<!-- Header -->
 	<header class="masthead">
@@ -49,9 +49,10 @@
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
+			<h4 style="color: red;">Erreur. Veuillez vous adresser à un conseiller</h4>
 		</div>
 	</header>
 
-	<h1>Erreur. Veuillez vous adresser à un conseiller</h1>
+	
 </body>
 </html>

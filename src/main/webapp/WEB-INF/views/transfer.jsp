@@ -59,7 +59,8 @@
 	<c:if test="${not empty accounts}">
 		<div class="account-list">
 			<form method="POST" action="">
-				<div class="left-list">
+					<div class="account-list">
+					<div class="left-list">
 					<h2>Sélectionner le compte à débiter</h2>
 					<table>
 						<tr>
@@ -99,16 +100,19 @@
 						</c:forEach>
 					</table>
 				</div>
+		</div>
 
+				<div style="margin-left: auto; margin-right:auto; padding-bottom:20px">
+				<div class="input-container" >
+					<input type="number" id="value" name="value" max="900" min="0" step=0.01>
+				</div>
 				<div class="label-container">
 					<label for="value">Montant à transférer (900 &#8364
 						maximum)</label>
 				</div>
-				<div class="input-container">
-					<input type="number" id="value" name="value" max="900" min="0" step=0.01>
-				</div>
-				<div class="buttons">
+				<div class="buttons" style="margin-left: auto; margin-right: auto;">
 					<button class="button">Valider</button>
+				</div>
 				</div>
 			</form>
 		</div>

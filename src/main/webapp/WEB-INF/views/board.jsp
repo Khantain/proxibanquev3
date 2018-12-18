@@ -48,7 +48,7 @@
 	<jsp:include page="deco_name.jsp" />
 	<div class="top_left" style="float: left">
 		<a href="/proxibanquev3/board.html">
-			<button class="button">Accueil</button>
+			<button class="button">Menu</button>
 		</a>
 	</div>
 
@@ -65,10 +65,7 @@
 
 	</header>
 	<div class="transfer-button">
-		<a href="transfer.html?id=${sessionScope.client.id}">
-			<button class="button" style="margin-top: 50px;">Faire un
-				virement</button>
-		</a>
+		
 	</div>
 	<div id="results"></div>
 	<div class="account-list">
@@ -148,8 +145,9 @@
 		</div>
 		</div>
 	<div class="footer-button">
-		<a href="index.html">
-			<button class="button">Retour à l'accueil</button>
+		<a href="transfer.html?id=${sessionScope.client.id}">
+			<button class="button" style="margin-top: 50px;">Faire un
+				virement</button>
 		</a>
 	</div>
 </body>
