@@ -2,6 +2,7 @@ package fr.formation.proxi3.metier.service;
 
 import fr.formation.proxi3.persistence.AccountDao;
 import fr.formation.proxi3.persistence.BankCardDao;
+import fr.formation.proxi3.persistence.CheckbookDao;
 import fr.formation.proxi3.persistence.ClientDao;
 
 import java.time.LocalDate;
@@ -128,10 +129,13 @@ public class AccountService {
 		account = this.read(accountId);
 		if (account.getCheckbook() != null) {
 			if (account.getCheckbook().getReceivingDate().isBefore(LocalDate.now().minusMonths(3))) {
-				account.setCheckbook(new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15)));
-				this.accountDao.update(account);
 				Integer checkBookId = account.getCheckbook().getId();
-				this.accountDao.delete(checkBookId);
+				account.setCheckbook(null);
+				CheckBook chk = new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15));
+				CheckbookDao.getInstance().create(chk);
+				account.setCheckbook(chk);
+				this.accountDao.update(account);
+				CheckbookDao.getInstance().delete(checkBookId);
 				message.setOK(true);
 				message.setMessage("“Nouveau chéquier valable jusqu’au " + LocalDate.now().plusDays(15).plusMonths(3)
 						+ " en cours de distribution...");
@@ -144,7 +148,9 @@ public class AccountService {
 			}
 
 		} else {
-			account.setCheckbook(new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15)));
+			CheckBook chk = new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15));
+			CheckbookDao.getInstance().create(chk);
+			account.setCheckbook(chk);
 			this.accountDao.update(account);
 			message.setOK(true);
 			message.setMessage("Premier chéquier pour ce compte en cours de distribution...");

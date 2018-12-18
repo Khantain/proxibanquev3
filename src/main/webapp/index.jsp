@@ -69,7 +69,7 @@
 					<label for="idClient">Nom et Prenom</label> 
 				</div> -->
 				<div class="input-container">
-					<input type="text" id="idClient"  name="idClient" value="Nom et Prénom">
+					<input type="text" id="idClient"  name="idClient" placeholder="Nom et Prénom">
 				</div> 
 				
 			</div>
@@ -81,22 +81,7 @@
 		</form>
 	</div>
 
-	<!-- Footer -->
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<span class="copyright">Copyright &copy; Proxibanque 2018</span>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-inline quicklinks">
-						<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-						<li class="list-inline-item"><a href="#">Terms of Use</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+	
 </body>
 
 </html>

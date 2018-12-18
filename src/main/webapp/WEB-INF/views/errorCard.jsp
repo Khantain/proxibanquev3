@@ -39,6 +39,10 @@
 
 <body id="page-top">
 <jsp:include page="deco_name.jsp" />
+<div class="top_left" style="float:left" >
+			<a href="/proxibanquev3/index.html"> 
+			<button class="button"> Accueil</button> </a>
+</div>
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">

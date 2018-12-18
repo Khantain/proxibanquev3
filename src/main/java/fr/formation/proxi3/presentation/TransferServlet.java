@@ -50,6 +50,6 @@ public class TransferServlet extends HttpServlet {
 		AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
 		
 		// Renvoyer à board.jsp + boolean afficheer div
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
+		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}
 }
