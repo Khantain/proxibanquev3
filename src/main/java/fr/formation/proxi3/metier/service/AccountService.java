@@ -3,9 +3,10 @@ package fr.formation.proxi3.metier.service;
 import fr.formation.proxi3.persistence.AccountDao;
 import fr.formation.proxi3.persistence.BankCardDao;
 import fr.formation.proxi3.persistence.CheckbookDao;
-import fr.formation.proxi3.persistence.ClientDao;
 
 import java.time.LocalDate;
+
+import org.apache.log4j.Logger;
 
 import fr.formation.proxi3.metier.entity.Account;
 import fr.formation.proxi3.metier.entity.BankCard;
@@ -20,6 +21,8 @@ import fr.formation.proxi3.metier.entity.CurrentAccount;
  *
  */
 public class AccountService {
+
+	private Logger logger = Logger.getLogger(AccountService.class.getName());
 
 	private static final AccountService INSTANCE = new AccountService(AccountDao.getInstance(),
 			BankCardDao.getInstance());
@@ -62,6 +65,7 @@ public class AccountService {
 	 *         la carte actuelle du compte n'a pas expiré.
 	 */
 	public boolean linkNewCard(Integer accountId, String type) {
+		logger.debug("Entree dans linkNewCard");
 		boolean resultOk = true;
 		// génération d'un nombre de longueur 16 aleatoirement.
 		String number = this.generateNumber();
@@ -78,14 +82,17 @@ public class AccountService {
 				this.accountDao.update(currentAccount);
 				// Suppression de la carte.
 				this.bankCardDao.delete(bankCardId);
+				logger.info("Suppression de la carte avec l'id : " + bankCardId);
 			} else {
+				logger.info("Pas de nouvelle carte créée car la carte la actuelle expire le "
+						+ currentAccount.getBankCard().getExpirationDate());
 				// Sinon on indique qu'il ne faut pas créer de carte.
 				resultOk = false;
 			}
 		}
 		// Si il est possible d'ajouter une carte.
 		if (resultOk) {
-			// On prepare la nouvelle carte.
+			// On prepare la nouvelle carte qui expirera 3 mois plus tard.
 			BankCard newCard = new BankCard();
 			newCard.setExpirationDate(LocalDate.now().plusMonths(3));
 			newCard.setType(type);
@@ -97,6 +104,7 @@ public class AccountService {
 			// On met à jour le compte avec le lien vers la nouvelle carte.
 			this.accountDao.update(currentAccount);
 		}
+		logger.debug("sortie de la methode linkNewCard");
 		return resultOk;
 	}
 
@@ -111,6 +119,7 @@ public class AccountService {
 			String num = Long.toString(Math.round(Math.random() * 10));
 			chaine += num;
 		}
+		logger.info("génération du numéro de carte : " + chaine);
 		return chaine;
 	}
 
@@ -119,41 +128,56 @@ public class AccountService {
 	 * 
 	 * @param accountId L'id du compte.
 	 * @return CheckbookStatus Objet contenant un booleen (qui vaut True si un
-	 *         nouveau chequier a effectivement été ajouté, false sinon) et un
-	 *         message précisant le résultat de l'opération.
+	 *         nouveau chequier a effectivement été ajouté au compte, false sinon)
+	 *         et un message précisant le résultat de l'opération.
 	 */
 	public CheckbookStatus linkCheckBook(Integer accountId) {
+		logger.debug("entree dans linkCheckBook");
 		CheckbookStatus message = new CheckbookStatus();
-		Account account = new Account();
-		// Recupere id compte et stock ds new
-		account = this.read(accountId);
+		Account account = this.read(accountId);
+		// test si le compte a déjà un chequier enregistré.
 		if (account.getCheckbook() != null) {
+			// test si le chequier en cours a été reçu il y a plus de 3 mois.
 			if (account.getCheckbook().getReceivingDate().isBefore(LocalDate.now().minusMonths(3))) {
+				// on récupère l'id du chequier expiré pour pouvoir le supprimer de la BDD à la
+				// fin.
 				Integer checkBookId = account.getCheckbook().getId();
+
+				// on supprime le chequiere actuel expiré.
 				account.setCheckbook(null);
+
+				// et on en crée un nouveau qu'on va lier au compte.
 				CheckBook chk = new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15));
 				CheckbookDao.getInstance().create(chk);
 				account.setCheckbook(chk);
 				this.accountDao.update(account);
+
+				// l'ancien chequier est supprimé définitivement.
 				CheckbookDao.getInstance().delete(checkBookId);
 				message.setOK(true);
 				message.setMessage("“Nouveau chéquier valable jusqu’au " + LocalDate.now().plusDays(15).plusMonths(3)
 						+ " en cours de distribution...");
+				logger.info("ajout d'un nouveau chequier en remplacement de l'ancien");
 				return message;
 			} else {
+				// le chequier actuel n'est pas périmé.
 				message.setMessage("Impossible d’effectuer le retrait d’un nouveau chéquier pour ce compte avant le "
 						+ account.getCheckbook().getReceivingDate().plusMonths(3) + ".");
 				message.setOK(false);
+				logger.info("pas de modification sur le chequier actuel encore valide.");
 				return message;
 			}
 
 		} else {
+			// ici on sait que le compte n'a pas de chéquier. Donc on en crée un et on
+			// l'ajoute au compte.
 			CheckBook chk = new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15));
 			CheckbookDao.getInstance().create(chk);
 			account.setCheckbook(chk);
 			this.accountDao.update(account);
 			message.setOK(true);
 			message.setMessage("Premier chéquier pour ce compte en cours de distribution...");
+			logger.info("ajout d'un premier chequier au compte");
 			return message;
 		}
 
@@ -169,10 +193,13 @@ public class AccountService {
 	public boolean makeWithdrawal(Integer id, Double value) {
 		boolean notOk = false;
 		Account account = AccountService.getInstance().read(id);
-		if (account.getBalance() > value && value<=300) {
+		// on teste si le compte à débiter n'aura pas de solde négatif suite au retrait
+		// et si le montant du retrait est bien ifnérieur à 300 euro.
+		if (account.getBalance() > value && value <= 300) {
 			account.setBalance(account.getBalance() - value);
 			AccountService.getInstance().update(account);
-			return true;
+			notOk = true;
+			logger.info("retrait d'argent liquide effectué");
 		}
 		return notOk;
 	}
@@ -189,11 +216,16 @@ public class AccountService {
 	public void makeTransfer(Integer idCompteADebiter, Integer idCompteACrediter, Double value) {
 		Account accountDebiteur = AccountService.getInstance().read(idCompteADebiter);
 		Account accountCrediteur = AccountService.getInstance().read(idCompteACrediter);
-		if (accountDebiteur.getBalance() > value && idCompteACrediter != idCompteADebiter && value<=900) {
+
+		// on teste si le compte a débiter n'aura pas de solde négatif, si les deux
+		// comptes sont différents et si le montant du transfert est bien inférieur à
+		// 900 euro.
+		if (accountDebiteur.getBalance() > value && idCompteACrediter != idCompteADebiter && value <= 900) {
 			accountDebiteur.setBalance(accountDebiteur.getBalance() - value);
 			AccountService.getInstance().update(accountDebiteur);
 			accountCrediteur.setBalance(accountCrediteur.getBalance() + value);
 			AccountService.getInstance().update(accountCrediteur);
+			logger.info("transfert effectué.");
 		}
 	}
 

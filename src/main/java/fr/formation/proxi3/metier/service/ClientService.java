@@ -2,6 +2,8 @@ package fr.formation.proxi3.metier.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.service.ClientService;
 import fr.formation.proxi3.persistence.AccountDao;
@@ -20,6 +22,7 @@ public class ClientService {
 	private static final ClientService INSTANCE = new ClientService(AccountDao.getInstance(), ClientDao.getInstance(),
 			BankCardDao.getInstance());
 	private ClientDao daoClient;
+	private Logger logger = Logger.getLogger(ClientService.class.getName());
 
 	/**
 	 * Retourne le singleton de la classe.
@@ -57,6 +60,7 @@ public class ClientService {
 	 *         ou plus d'un client ayant ce nom et ce prénom.
 	 */
 	public Client read(String firstname, String lastname) {
+		logger.info("recherche de " + firstname + " " + lastname);
 		return this.daoClient.read(firstname, lastname);
 	}
 }
