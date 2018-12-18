@@ -165,6 +165,7 @@ public class AccountService {
 	 * 
 	 * @param id    L'id du compte sur lequel faire le retrait.
 	 * @param value Le montant du retrait à effectuer.
+	 * @return 
 	 */
 	public boolean makeWithdrawal(Integer id, Double value) {
 		boolean notOk = false;
@@ -186,7 +187,8 @@ public class AccountService {
 	 * @param idCompteACrediter L'id du compte a crediter.
 	 * @param value             Le montant du transfert.
 	 */
-	public void makeTransfer(Integer idCompteADebiter, Integer idCompteACrediter, Double value) {
+	public boolean makeTransfer(Integer idCompteADebiter, Integer idCompteACrediter, Double value) {
+		boolean notOk = false;
 		Account accountDebiteur = AccountService.getInstance().read(idCompteADebiter);
 		Account accountCrediteur = AccountService.getInstance().read(idCompteACrediter);
 		if (accountDebiteur.getBalance() > value && idCompteACrediter != idCompteADebiter && value<=900) {
@@ -194,7 +196,9 @@ public class AccountService {
 			AccountService.getInstance().update(accountDebiteur);
 			accountCrediteur.setBalance(accountCrediteur.getBalance() + value);
 			AccountService.getInstance().update(accountCrediteur);
+			return true;
 		}
+		return notOk;
 	}
 
 }

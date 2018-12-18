@@ -46,11 +46,9 @@ public class TransferServlet extends HttpServlet {
 		Double value = Double.parseDouble(req.getParameter("value"));
 		Integer compteADebiter = Integer.parseInt(req.getParameter("compteADebiter"));
 		Integer compteACrediter = Integer.parseInt(req.getParameter("compteACrediter"));
-
-		AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
 		Integer id = Integer.parseInt(req.getParameter("id"));
-		boolean notOk = AccountService.getInstance().makeWithdrawal(id, value);
-		req.setAttribute("bool",notOk);
+		boolean ok = AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
+		req.setAttribute("bool",ok);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorTransfer.jsp").forward(req, resp);
 	//	resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}
