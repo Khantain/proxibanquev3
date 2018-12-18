@@ -36,9 +36,14 @@ public class ClientDao extends AbstractDao<Client> {
 	}
 
 	/**
-	 * {@inheritDoc} <br>
-	 * <br>
-	 * Permet de recuperer les infos d'un client à partir de son nom et de son prénom.
+	 * Methode permettant de récupérer un client à partir de son nom et de son
+	 * prenom. S'il n'y pas de client ou plus d'un client associe à ces valeurs,
+	 * l'objet retourne vaut null.
+	 * 
+	 * @param firstname Le prénom du client recherche
+	 * @param lastname  Le nom du client recherche
+	 * @return Client le client de la base de données. Null s'il n'y a pas de client
+	 *         ou plus d'un client ayant ce nom et ce prénom.
 	 */ 
 	public Client read(String firstname, String lastname){
 		TypedQuery<Client> query = this.em.createQuery(JpqlQueries.SELECT_ONE_CLIENT, Client.class);

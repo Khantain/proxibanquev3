@@ -12,13 +12,21 @@ import fr.formation.proxi3.metier.entity.Account;
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.service.AccountService;
 
-public class TransferServlet extends HttpServlet{
+/**
+ * Classe servlet gérant les requetes arrivant sur /transfer.html.
+ * 
+ * @author Adminl
+ *
+ */
+public class TransferServlet extends HttpServlet {
+
+
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Methode gérant les requetes GET. Elle récupère la liste des comptes du client
+	 * et transfere la requete vers le formulaire de virement.
 	 */
-	private static final long serialVersionUID = 1L;
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Client client = (Client) req.getSession().getAttribute("client");
@@ -26,24 +34,22 @@ public class TransferServlet extends HttpServlet{
 		req.setAttribute("accounts", accounts);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
 	}
-	
+
+	/**
+	 * Methode gérant les requetes POST. Elle récupèreles id des comptes a crediter
+	 * et debiter ainsi que le montant du virement qui ne peut pas être superieur à
+	 * 900 euro. et transfere la requete vers le formulaire de virement. Appel de la
+	 * méthode makeTransfer pour effectuer le virement
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Client client = (Client) req.getSession().getAttribute("client");
 		Double value = Double.parseDouble(req.getParameter("value"));
-		Integer compteADebiter = Integer.parseInt(req.getParameter("compteADebiter")); 
-		Integer compteACrediter = Integer.parseInt(req.getParameter("compteACrediter")); 
-		Account accountDebiteur = AccountService.getInstance().read(compteADebiter);
-		Account accountCrediteur = AccountService.getInstance().read(compteACrediter);
-		if (accountDebiteur.getBalance()>value && compteACrediter != compteADebiter) {
-			accountDebiteur.setBalance(accountDebiteur.getBalance()-value);
-			AccountService.getInstance().update(accountDebiteur);
-			accountCrediteur.setBalance(accountCrediteur.getBalance()+value);
-			AccountService.getInstance().update(accountCrediteur);
-			// Renvoyer à board.jsp + boolean afficheer div
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
-		}
-	}
-	
+		Integer compteADebiter = Integer.parseInt(req.getParameter("compteADebiter"));
+		Integer compteACrediter = Integer.parseInt(req.getParameter("compteACrediter"));
+
+		AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
 		
+		// Renvoyer à board.jsp + boolean afficheer div
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
+	}
 }
