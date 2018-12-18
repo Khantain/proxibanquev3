@@ -11,36 +11,38 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-/** Classe abstraite représentant un compte en banque générique.
+/**
+ * Classe abstraite représentant un compte en banque générique.
+ * 
  * @author Adminl
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
 public class Account {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="balance")
+
+	@Column(name = "balance")
 	private Double balance;
-	
-	@Column(name="number")
+
+	@Column(name = "number")
 	private String number;
-	
-	@Column(name="label")
+
+	@Column(name = "label")
 	private String label;
-	
-	@Column(name="openDate")
+
+	@Column(name = "openDate")
 	private String openDate;
 
 	@OneToOne
-	@JoinColumn(name="checkbook")
+	@JoinColumn(name = "checkbook")
 	private CheckBook checkbook;
-	
+
 	public Account() {
 	}
 
@@ -92,6 +94,4 @@ public class Account {
 		this.checkbook = checkbook;
 	}
 
-	
-	
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * @param <T> classe qui represente le type de donnees manipule par le DAO.
  */
 public interface Dao<T> {
-	
+
 	/**
 	 * Crée une nouvelle entité en base de données.
 	 * 
@@ -41,7 +41,7 @@ public interface Dao<T> {
 	 * @return l'entite mise � jour
 	 */
 	public T update(T entity);
-	
+
 	/**
 	 * Supprime définitivement une entité de la base de données.
 	 * 

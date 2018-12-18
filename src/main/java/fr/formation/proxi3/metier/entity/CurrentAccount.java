@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-
-/** Classe représentant un compte courant. Herite de la classe {@link Account}.
+/**
+ * Classe représentant un compte courant. Herite de la classe {@link Account}.
+ * 
  * @author Adminl
  *
  */
 @Entity
-@DiscriminatorValue(value="current")
+@DiscriminatorValue(value = "current")
 public class CurrentAccount extends Account {
-	
+
 	@OneToOne
-	@JoinColumn(name="bankcard")
+	@JoinColumn(name = "bankcard")
 	private BankCard bankCard;
 
 	public BankCard getBankCard() {
@@ -26,6 +27,4 @@ public class CurrentAccount extends Account {
 		this.bankCard = bankCard;
 	}
 
-	
-	
 }

@@ -232,3 +232,16 @@ h4 {
 	color: red;
 	text-align:center; 
 }
+
+.results>#response_OK{
+	margin-top: 20px;
+	color: green;
+	text-align:center; 
+}
+
+.results>#response_notOK{
+	margin-top: 20px;
+	color: red;
+	text-align:center; 
+}
+

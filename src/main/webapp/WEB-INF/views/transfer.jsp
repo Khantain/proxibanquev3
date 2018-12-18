@@ -59,9 +59,9 @@
 	<c:if test="${not empty accounts}">
 		<div class="account-list">
 			<form method="POST" action="">
-					<div class="account-list">
+				
 					<div class="left-list">
-					<h4>Sélectionner le compte à débiter<h4>
+					<h4>Sélectionner le compte à débiter</h4>
 					<table>
 						<tr>
 							<th>Numero de compte</th>
@@ -100,7 +100,7 @@
 						</c:forEach>
 					</table>
 				</div>
-		</div>
+	
 
 				<div style="margin-left: auto; margin-right:auto; padding-bottom:20px">
 				<div class="input-container" >

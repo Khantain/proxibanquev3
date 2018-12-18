@@ -44,7 +44,9 @@ public class AccountService {
 		return AccountService.INSTANCE;
 	}
 
-	/** Methode permettant de récupere un compte à partir de son ID.
+	/**
+	 * Methode permettant de récupere un compte à partir de son ID.
+	 * 
 	 * @param id l'id du compte.
 	 * @return Account Le compte.
 	 */
@@ -52,7 +54,9 @@ public class AccountService {
 		return this.accountDao.read(id);
 	}
 
-	/** Methode permettant de mettre à jour les informations d'un compte
+	/**
+	 * Methode permettant de mettre à jour les informations d'un compte
+	 * 
 	 * @param account Le compte à mettre à jour.
 	 */
 	public void update(Account account) {
@@ -162,7 +166,7 @@ public class AccountService {
 				// l'ancien chequier est supprimé définitivement.
 				CheckbookDao.getInstance().delete(checkBookId);
 				message.setOK(true);
-				message.setMessage("“Nouveau chéquier valable jusqu’au " + LocalDate.now().plusDays(15).plusMonths(3)
+				message.setMessage("Nouveau chéquier valable jusqu’au " + LocalDate.now().plusDays(15).plusMonths(3)
 						+ " en cours de distribution...");
 				logger.info("ajout d'un nouveau chequier en remplacement de l'ancien");
 				return message;
@@ -196,7 +200,7 @@ public class AccountService {
 	 * 
 	 * @param id    L'id du compte sur lequel faire le retrait.
 	 * @param value Le montant du retrait à effectuer.
-	 * @return 
+	 * @return
 	 */
 	public boolean makeWithdrawal(Integer id, Double value) {
 		boolean notOk = false;
@@ -235,7 +239,7 @@ public class AccountService {
 			accountCrediteur.setBalance(accountCrediteur.getBalance() + value);
 			AccountService.getInstance().update(accountCrediteur);
 			logger.info("transfert effectué.");
-
+			notOk = true;
 		}
 		return notOk;
 	}

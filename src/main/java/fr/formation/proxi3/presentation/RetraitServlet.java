@@ -44,12 +44,11 @@ public class RetraitServlet extends HttpServlet {
 		// recupération de l'id du compte et du montant du retrait
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		Double value = Double.parseDouble(req.getParameter("value"));
-		// appel de la méthode de retrait de AccountService.
-		AccountService.getInstance().makeWithdrawal(id, value);
 		// redirection vers la page principale des comptes.
 		boolean ok = AccountService.getInstance().makeWithdrawal(id, value);
-		req.setAttribute("bool",ok);
+		req.setAttribute("bool", ok);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorWithdraw.jsp").forward(req, resp);
+		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}
 
 }

@@ -8,28 +8,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/** CLasse représentant une carte bancaire.
+/**
+ * CLasse représentant une carte bancaire.
+ * 
  * @author Adminl
  *
  */
 @Entity
 public class BankCard {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="expriationDate")
+
+	@Column(name = "expriationDate")
 	private LocalDate expirationDate;
-	
-	@Column(name="number")
+
+	@Column(name = "number")
 	private String number;
-	
-	@Column(name="type")
+
+	@Column(name = "type")
 	private String type;
 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -61,6 +62,5 @@ public class BankCard {
 	public void setType(String type) {
 		this.type = type;
 	}
-
 
 }

@@ -20,14 +20,16 @@ import fr.formation.proxi3.metier.entity.Client;
 public class ClientDao extends AbstractDao<Client> {
 
 	private static final ClientDao INSTANCE = new ClientDao();
-	
-	/** Renvoie le singleton de la classe.
+
+	/**
+	 * Renvoie le singleton de la classe.
+	 * 
 	 * @return ClientDao le singleton.
 	 */
 	public static ClientDao getInstance() {
 		return ClientDao.INSTANCE;
 	}
-	
+
 	/**
 	 * {@inheritDoc} <br>
 	 * <br>
@@ -47,15 +49,15 @@ public class ClientDao extends AbstractDao<Client> {
 	 * @param lastname  Le nom du client recherche
 	 * @return Client le client de la base de données. Null s'il n'y a pas de client
 	 *         ou plus d'un client ayant ce nom et ce prénom.
-	 */ 
-	public Client read(String firstname, String lastname){
+	 */
+	public Client read(String firstname, String lastname) {
 		TypedQuery<Client> query = this.em.createQuery(JpqlQueries.SELECT_ONE_CLIENT, Client.class);
 		Client client = null;
 		try {
-		query.setParameter("firstname", firstname);
-		query.setParameter("lastname", lastname);
+			query.setParameter("firstname", firstname);
+			query.setParameter("lastname", lastname);
 			client = query.getSingleResult();
-			
+
 		} catch (NoResultException | NonUniqueResultException e) {
 			System.out.println("impossible de récupérer un seul client dans la BDD avec ces parametres.");
 		}
@@ -70,12 +72,9 @@ public class ClientDao extends AbstractDao<Client> {
 	@Override
 	public List<Client> readAll() {
 		List<Client> clients = new ArrayList<>();
-		TypedQuery<Client> query = this.em
-				.createQuery(JpqlQueries.SELECT_ALL_CLIENT, Client.class);
+		TypedQuery<Client> query = this.em.createQuery(JpqlQueries.SELECT_ALL_CLIENT, Client.class);
 		clients.addAll(query.getResultList());
 		return clients;
 	}
 
 }
-
-

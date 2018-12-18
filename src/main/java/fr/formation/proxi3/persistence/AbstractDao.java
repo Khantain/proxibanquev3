@@ -3,6 +3,7 @@ package fr.formation.proxi3.persistence;
 import javax.persistence.EntityManager;
 
 import fr.formation.proxi3.persistence.MySqlConnection;
+
 /**
  * Implémentation du Design Pattern DAO vers l'API JPA.
  *
@@ -47,8 +48,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
 	}
 
 	/**
-	 * Lecture d'une entité par son identifiant. Il est nécessaire de connaître
-	 * la classe Java qui représente l'entité pour pouvoir lire les bonnes
+	 * Lecture d'une entité par son identifiant. Il est nécessaire de connaître la
+	 * classe Java qui représente l'entité pour pouvoir lire les bonnes
 	 * informations.
 	 */
 	@SuppressWarnings("unchecked")

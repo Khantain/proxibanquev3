@@ -12,21 +12,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/** Classe représentant un client de la banque.
+/**
+ * Classe représentant un client de la banque.
+ * 
  * @author Adminl
  *
  */
 @Entity
 @Table(name = "client")
 public class Client {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	@Column
 	private String firstname;
-	
+
 	@Column
 	private String lastname;
 
@@ -36,15 +38,14 @@ public class Client {
 
 	@Column
 	private String number;
-	
+
 	@Column
 	private String birthDate;
-	
+
 	@OneToMany
 	@JoinColumn(name = "client_id", referencedColumnName = "id")
 	private List<Account> accounts;
 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -101,5 +102,4 @@ public class Client {
 		this.accounts = accounts;
 	}
 
-	
 }

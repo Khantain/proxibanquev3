@@ -41,7 +41,7 @@ public class ClientService {
 	}
 
 	/**
-	 *Recupere la liste de tous les clients de la base de donnees.
+	 * Recupere la liste de tous les clients de la base de donnees.
 	 * 
 	 * @return La liste des clients.
 	 */
@@ -51,8 +51,8 @@ public class ClientService {
 
 	/**
 	 * Methode permettant de récupérer un client à partir de son nom et de son
-	 * prenom. S'il n'y pas de client ou au moins deux clients associes à ces valeurs,
-	 * l'objet retourne vaut null.
+	 * prenom. S'il n'y pas de client ou au moins deux clients associes à ces
+	 * valeurs, l'objet retourne vaut null.
 	 * 
 	 * @param firstname Le prénom du client recherche
 	 * @param lastname  Le nom du client recherche

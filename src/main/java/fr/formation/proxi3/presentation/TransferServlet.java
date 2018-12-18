@@ -20,7 +20,6 @@ import fr.formation.proxi3.metier.service.AccountService;
  */
 public class TransferServlet extends HttpServlet {
 
-
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -48,8 +47,8 @@ public class TransferServlet extends HttpServlet {
 		Integer compteACrediter = Integer.parseInt(req.getParameter("compteACrediter"));
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		boolean ok = AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
-		req.setAttribute("bool",ok);
+		req.setAttribute("bool", ok);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorTransfer.jsp").forward(req, resp);
-	//	resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
+		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}
 }

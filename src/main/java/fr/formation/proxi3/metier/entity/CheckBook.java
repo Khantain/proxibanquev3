@@ -9,28 +9,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/** Classe représentant un chéquier.
+/**
+ * Classe représentant un chéquier.
+ * 
  * @author Adminl
  *
  */
 @Entity
 @Table(name = "checkbook")
 public class CheckBook {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="sendDate")
+
+	@Column(name = "sendDate")
 	private LocalDate sendDate;
-	
-	@Column(name="receivingDate")
+
+	@Column(name = "receivingDate")
 	private LocalDate receivingDate;
 
 	public CheckBook() {
 	}
-	
+
 	public CheckBook(LocalDate now, LocalDate plusDays) {
 		this.sendDate = now;
 		this.receivingDate = plusDays;

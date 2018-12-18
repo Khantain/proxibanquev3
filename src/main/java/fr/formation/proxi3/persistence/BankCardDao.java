@@ -1,6 +1,5 @@
 package fr.formation.proxi3.persistence;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +8,16 @@ import javax.persistence.TypedQuery;
 import fr.formation.proxi3.metier.entity.BankCard;
 
 /**
- * Classe regroupant les traitements a effectuer sur les cartes bancaires. Respecte le
- * design pattern singleton.
+ * Classe regroupant les traitements a effectuer sur les cartes bancaires.
+ * Respecte le design pattern singleton.
  * 
  * @author Adminl
  *
  */
-public class BankCardDao extends AbstractDao<BankCard>{
-	
+public class BankCardDao extends AbstractDao<BankCard> {
+
 	private static final BankCardDao INSTANCE = new BankCardDao();
-	
+
 	public static BankCardDao getInstance() {
 		return BankCardDao.INSTANCE;
 	}
@@ -31,8 +30,7 @@ public class BankCardDao extends AbstractDao<BankCard>{
 	@Override
 	public List<BankCard> readAll() {
 		List<BankCard> bankCards = new ArrayList<>();
-		TypedQuery<BankCard> query = this.em
-				.createQuery(JpqlQueries.SELECT_ALL_BANKCARD, BankCard.class);
+		TypedQuery<BankCard> query = this.em.createQuery(JpqlQueries.SELECT_ALL_BANKCARD, BankCard.class);
 		bankCards.addAll(query.getResultList());
 		return bankCards;
 	}

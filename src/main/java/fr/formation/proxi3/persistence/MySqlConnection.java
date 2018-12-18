@@ -16,7 +16,8 @@ public class MySqlConnection {
 	 */
 	private static final MySqlConnection INSTANCE = new MySqlConnection();
 
-	/** Methode permettant de recuperer le singleton.
+	/**
+	 * Methode permettant de recuperer le singleton.
 	 * 
 	 * @return MysqlConnection l'instance unique (singleton) de connexion BDD.
 	 */
@@ -29,26 +30,25 @@ public class MySqlConnection {
 	 * EntityManagerFactory.
 	 */
 	private EntityManagerFactory entityManagerFactory;
-	
+
 	/**
-	 * Instance unique pour l'entity manager pour ne pas avoir de problème de refresh avec les données.
+	 * Instance unique pour l'entity manager pour ne pas avoir de problème de
+	 * refresh avec les données.
 	 */
 	private EntityManager entityManager;
 
 	/**
-	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory
-	 * associée à notre unité de persistence 'blog' définie dans
-	 * persistence.xml.
+	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory associée
+	 * à notre unité de persistence 'blog' définie dans persistence.xml.
 	 */
 	public MySqlConnection() {
-		this.entityManagerFactory = Persistence
-				.createEntityManagerFactory("proxibanquev3");
+		this.entityManagerFactory = Persistence.createEntityManagerFactory("proxibanquev3");
 		this.entityManager = this.entityManagerFactory.createEntityManager();
 	}
 
 	/**
-	 * @return EntityManager une instance capable d'effectuer les opérations
-	 *         CRUD sur la base de données.
+	 * @return EntityManager une instance capable d'effectuer les opérations CRUD
+	 *         sur la base de données.
 	 */
 	public EntityManager getEntityManager() {
 		return this.entityManager;

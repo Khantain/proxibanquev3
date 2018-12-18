@@ -49,7 +49,7 @@ public class BankCardServlet extends HttpServlet {
 		// Appel de la methode de AccountService qui gere l'ajout de la carte bleue et
 		// transfert du booleen à la jsp pour adapter le message de confirmation.
 		boolean newCard = AccountService.getInstance().linkNewCard(id, type);
-		req.setAttribute("bool",newCard);
+		req.setAttribute("bool", newCard);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorCard.jsp").forward(req, resp);
 	}
 }

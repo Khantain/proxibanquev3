@@ -7,30 +7,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/** Classe représentant une adresse d'un client de la banque.
+/**
+ * Classe représentant une adresse d'un client de la banque.
+ * 
  * @author Adminl
  *
  */
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "country")
 	private String country;
-	
+
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "zipcode")
 	private String zipCode;
-	
+
 	@Column(name = "mainAddress")
 	private String mainAddress;
-	
+
 	@Column(name = "complementAddress")
 	private String complementAddress;
 
@@ -81,7 +83,5 @@ public class Address {
 	public void setComplementAddress(String complementAddress) {
 		this.complementAddress = complementAddress;
 	}
-	
-	
 
 }

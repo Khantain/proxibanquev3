@@ -21,7 +21,7 @@ $(document).ready(function() {
         dataTye:'json'
     }).done(function(object) {
     	console.log(object)
-        if(object.isOK) {
+        if(object.ok == true) {
             $("#results").append($("<h5 id='response_OK'>"+object.message+"</h5>"));
         } else {
             $("#results").append($("<h5 id='response_notOK'>"+object.message+"</h5>"));
