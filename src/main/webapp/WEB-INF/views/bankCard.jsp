@@ -36,7 +36,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/deco_name.jsp"></jsp:include>
 	<div class="top_left" style="float:left" >
-			<a href="/proxibanquev3/board.html"> 
+			<a href="board.html"> 
 			<button class="button">Menu</button> </a>
 </div>
 	<section class="head"></section>

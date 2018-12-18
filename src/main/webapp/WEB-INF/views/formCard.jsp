@@ -44,7 +44,7 @@
 <body id="page-top">
 	<jsp:include page="deco_name.jsp" />
 	<div class="top_left" style="float:left" >
-			<a href="/proxibanquev3/board.html"> 
+			<a href="board.html"> 
 			<button class="button">Menu</button> </a>
 </div>
 	<!-- Header -->
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 
-		<form method="POST" action="/proxibanquev3/card.html?id=${id}">
+		<form method="POST" action="card.html?id=${id}">
 
 			<input type="radio" id="idElecreon" name="type"
 				value="electron"> <label for="type" style="color:black;"> Electron </label>

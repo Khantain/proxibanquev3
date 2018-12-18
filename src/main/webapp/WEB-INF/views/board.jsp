@@ -47,7 +47,7 @@
 <body id="page-top">
 	<jsp:include page="deco_name.jsp" />
 	<div class="top_left" style="float: left">
-		<a href="/proxibanquev3/board.html">
+		<a href="board.html">
 			<button class="button">Menu</button>
 		</a>
 	</div>
