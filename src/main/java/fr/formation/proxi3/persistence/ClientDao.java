@@ -21,6 +21,9 @@ public class ClientDao extends AbstractDao<Client> {
 
 	private static final ClientDao INSTANCE = new ClientDao();
 	
+	/** Renvoie le singleton de la classe.
+	 * @return ClientDao le singleton.
+	 */
 	public static ClientDao getInstance() {
 		return ClientDao.INSTANCE;
 	}

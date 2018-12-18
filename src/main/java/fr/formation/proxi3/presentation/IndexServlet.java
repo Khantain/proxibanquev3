@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.service.ClientService;
 
@@ -19,8 +21,8 @@ import fr.formation.proxi3.metier.service.ClientService;
  */
 public class IndexServlet extends HttpServlet {
 
-	
 	private static final long serialVersionUID = 1L;
+	private Logger logger = Logger.getLogger(IndexServlet.class.getName());
 
 	/**
 	 * Methode prenant en charge une requete GET sur l'adresse "/index.html". Elle
@@ -28,7 +30,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		logger.debug("entree dans le doget de indexServlet");
 		this.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 
@@ -41,9 +43,11 @@ public class IndexServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		logger.debug("entree dans le doPost de indexServlet");
 		// recupération du nom et du prenom à partir du champ unique de saisie.
 		String person = req.getParameter("idClient");
 		System.out.println(person);
+		logger.info("Connexion de " + person);
 		String firstname = "";
 		String lastname = "";
 
@@ -54,6 +58,7 @@ public class IndexServlet extends HttpServlet {
 				System.out.println(personSplit.length);
 				lastname = personSplit[0];
 				firstname = personSplit[1];
+				logger.debug("Resultat du split " + firstname + " " + lastname);
 			} catch (ArrayIndexOutOfBoundsException e) {
 				// si le split ne marche pas, le client est envoyé vers la page d'erreur.
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorPerson.jsp").forward(req, resp);
@@ -74,6 +79,7 @@ public class IndexServlet extends HttpServlet {
 			if (client == null) {
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorPerson.jsp").forward(req, resp);
 			}
+			logger.info("Id du client : " + client.getId());
 			// Le client récupéré est stocké dans la session.
 			req.getSession().setAttribute("client", client);
 			// redirection vers board.html

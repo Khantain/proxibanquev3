@@ -8,6 +8,13 @@ import javax.persistence.TypedQuery;
 
 import fr.formation.proxi3.metier.entity.BankCard;
 
+/**
+ * Classe regroupant les traitements a effectuer sur les cartes bancaires. Respecte le
+ * design pattern singleton.
+ * 
+ * @author Adminl
+ *
+ */
 public class BankCardDao extends AbstractDao<BankCard>{
 	
 	private static final BankCardDao INSTANCE = new BankCardDao();

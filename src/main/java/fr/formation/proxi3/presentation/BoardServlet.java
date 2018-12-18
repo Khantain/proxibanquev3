@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import fr.formation.proxi3.metier.entity.Account;
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.entity.CurrentAccount;
@@ -24,6 +26,7 @@ import fr.formation.proxi3.metier.service.AccountService;
 public class BoardServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private Logger logger = Logger.getLogger(BoardServlet.class.getName());
 
 	/**
 	 * Methode gerant les requetes GET. Elle récupère les comptes courant et epargne
@@ -34,11 +37,13 @@ public class BoardServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		logger.debug("entree dans le doGet de BoardServlet");
 		// Récupération de la liste de comptes du client
 		List<Account> currentAccount = new ArrayList<>();
 		List<Account> savingsAccount = new ArrayList<>();
 		Client client = (Client) req.getSession().getAttribute("client");
 		List<Account> accounts = client.getAccounts();
+		logger.info("Nombre de comptes récupérés : " + accounts.size());
 		// A partir de la liste complète des comptes, on crée les deux listes : comptes
 		// epargne / comptes courant.
 		for (Account account : accounts) {
