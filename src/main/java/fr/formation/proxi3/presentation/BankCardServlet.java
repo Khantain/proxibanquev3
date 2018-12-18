@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.formation.proxi3.metier.entity.CurrentAccount;
+import fr.formation.proxi3.metier.service.AccountService;
+
 public class BankCardServlet extends HttpServlet{
 
 	/**
@@ -16,8 +19,19 @@ public class BankCardServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		req.setAttribute("id", id);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/formCard.jsp").forward(req, resp);
 	}
 	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		CurrentAccount currentAccount = (CurrentAccount) AccountService.getInstance().read(id);
+		String type = req.getParameter("type");
+		boolean newCard = AccountService.getInstance().linkNewCard(id, type);
+		req.setAttribute("boolean",newCard);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorCard.jsp").forward(req, resp);
+	}
 }

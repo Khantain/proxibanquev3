@@ -32,6 +32,9 @@
 <link href="css/agency.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
+<script src="js/jquery.js"> </script>
+<script src="js/checkbook_verif.js"> </script>
+
 </head>
 
 <body id="page-top">
@@ -83,16 +86,15 @@
 									</a>
 								</td>
 								<td class="balance">
-									<a href="checkbook.html?id=${currentAccount.id}">
 										<button class="button" id="validate">Demande chéquier</button>
-									</a>
 								</td>
 								<td class="balance">
-									<a href="checkbook.html?id=${currentAccount.id}">
+									<a href="card.html?id=${currentAccount.id}">
 										<button class="button">Demande CB</button>
 									</a>
 								</td>
 						</tr>
+							<div id="results"> </div>
 					</c:forEach>
 					</table>
 					</c:if>
@@ -118,17 +120,11 @@
 								<td class="balance">${savingAccount.balance}</td>
 								<td class="balance">${savingAccount.openDate}</td>
 								<td class="balance">
-									<a href="checkbook.html?id=${savingAccount.id}">
 										<button class="button" id="validate">Demande chéquier</button>
-									</a>
-								</td>
-								<td class="balance">
-									<a href="checkbook.html?id=${savingAccount.id}">
-										<button class="button">Demande CB</button>
-									</a>
 								</td>
 								
 							</tr>
+							<div id="results"> </div>
 						</c:forEach>
 					</table>
 					</c:if>

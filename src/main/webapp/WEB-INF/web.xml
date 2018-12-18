@@ -16,6 +16,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>BankCardServlet</servlet-name>
+		<servlet-class>fr.formation.proxi3.presentation.BankCardServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BankCardServlet</servlet-name>
+		<url-pattern>/card.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>DecoServlet</servlet-name>
 		<servlet-class>fr.formation.proxi3.presentation.DecoServlet</servlet-class>
 	</servlet>

@@ -51,15 +51,19 @@ public class AccountService {
 	
 	public boolean linkNewCard(Integer accountId, String type) {
 		boolean resultOk = true;
+		String number = "0000000000000001";
 		CurrentAccount currentAccount = (CurrentAccount) this.accountDao.read(accountId);
 		// Si le compte avait déjà une carte et qu'elle a expirée.
 		if (currentAccount.getBankCard() != null) {
+			Integer bankCardId = currentAccount.getBankCard().getId();
 			// On vérifie que la date d'expiration est bien dépassée.
 			if (currentAccount.getBankCard().getExpirationDate().isBefore(LocalDate.now())) {
 				// Retirer le lien entre l'ancienne carte et le compte.
 				currentAccount.setBankCard(null);
 				// Mettre à jour le compte pour que le lien n'existe plus en BDD.
-				this.accountDao.update(currentAccount);				
+				this.accountDao.update(currentAccount);
+				// Suppression de la carte.
+				this.bankCardDao.delete(bankCardId);
 			} else {
 				// Sinon on indique qu'il ne faut pas créer de carte.
 				resultOk = false;
@@ -71,6 +75,7 @@ public class AccountService {
 			BankCard newCard = new BankCard();
 			newCard.setExpirationDate(LocalDate.now().plusMonths(3));
 			newCard.setType(type);
+			newCard.setNumber(number);
 			// On créé la carte en BDD pour avoir un id généré.
 			newCard = this.bankCardDao.create(newCard);
 			// On lie la nouvelle carte au compte.
@@ -90,6 +95,8 @@ public class AccountService {
 			if (account.getCheckbook().getReceivingDate().isBefore(LocalDate.now().minusMonths(3))) {
 				account.setCheckbook(new CheckBook(LocalDate.now(), LocalDate.now().plusDays(15)));
 				this.accountDao.update(account);
+				Integer checkBookId = account.getCheckbook().getId();
+				this.accountDao.delete(checkBookId);
 				message.setOK(true);
 				message.setMessage("“Nouveau chéquier valable jusqu’au "  + LocalDate.now().plusDays(15).plusMonths(3) + " en cours de distribution...");
 				return message;

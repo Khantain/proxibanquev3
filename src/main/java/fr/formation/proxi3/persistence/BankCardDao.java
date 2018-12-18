@@ -16,7 +16,6 @@ public class BankCardDao extends AbstractDao<BankCard>{
 		return BankCardDao.INSTANCE;
 	}
 
-
 	@Override
 	public BankCard read(Integer id) {
 		return this.read(id, new BankCard());
@@ -30,10 +29,5 @@ public class BankCardDao extends AbstractDao<BankCard>{
 		bankCards.addAll(query.getResultList());
 		return bankCards;
 	}
-	
-	public BankCard create(BankCard bankcard) {
-		return null;
-	}
-
 
 }
