@@ -44,10 +44,17 @@ public class AccountService {
 		return AccountService.INSTANCE;
 	}
 
+	/** Methode permettant de récupere un compte à partir de son ID.
+	 * @param id l'id du compte.
+	 * @return Account Le compte.
+	 */
 	public Account read(Integer id) {
 		return this.accountDao.read(id);
 	}
 
+	/** Methode permettant de mettre à jour les informations d'un compte
+	 * @param account Le compte à mettre à jour.
+	 */
 	public void update(Account account) {
 		this.accountDao.update(account);
 
@@ -109,9 +116,9 @@ public class AccountService {
 	}
 
 	/**
-	 * genere une chaine de 16 chiffres aleatoirement.
+	 * Methode qui genere une chaine de 16 chiffres aleatoirement.
 	 * 
-	 * @return La chaine générée.
+	 * @return String La chaine générée.
 	 */
 	private String generateNumber() {
 		String chaine = "";

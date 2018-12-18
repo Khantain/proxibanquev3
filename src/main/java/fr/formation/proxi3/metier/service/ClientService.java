@@ -51,7 +51,7 @@ public class ClientService {
 
 	/**
 	 * Methode permettant de récupérer un client à partir de son nom et de son
-	 * prenom. S'il n'y pas de client ou plus d'un client associe à ces valeurs,
+	 * prenom. S'il n'y pas de client ou au moins deux clients associes à ces valeurs,
 	 * l'objet retourne vaut null.
 	 * 
 	 * @param firstname Le prénom du client recherche
