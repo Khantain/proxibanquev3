@@ -31,7 +31,8 @@ public class BankCardServlet extends HttpServlet{
 		CurrentAccount currentAccount = (CurrentAccount) AccountService.getInstance().read(id);
 		String type = req.getParameter("type");
 		boolean newCard = AccountService.getInstance().linkNewCard(id, type);
-		req.setAttribute("boolean",newCard);
+		req.setAttribute("bool",newCard);
+		System.out.println(newCard);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorCard.jsp").forward(req, resp);
 	}
 }

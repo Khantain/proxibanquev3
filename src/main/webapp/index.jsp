@@ -62,26 +62,27 @@
 	</header>
 
 	<!-- Affichage du formulaire de connexion -->
-	<div class="form_connection">
+	<div class="form_connection" style="margin-top : 50px;">
 	<form method="post" action="">
 			<div class="edit-form">
-				<div class="label-container">
+				<!-- <div class="label-container">
 					<label for="idClient">Nom et Prenom</label> 
-				</div>
+				</div> -->
 				<div class="input-container">
-					<input type="text" id="idClient"  name="idClient">
+					<input type="text" id="idClient"  name="idClient" value="Nom et Prénom">
 				</div> 
 				
 			</div>
 		<div class="buttons">
-			<button class="button">Valider</button>
 			<button type="reset" class="button">Réinitialiser</button>
+			<button class="button">Valider</button>
+			
 		</div>
 		</form>
 	</div>
 
 	<!-- Footer -->
-	<footer>
+	<footer style=" bottom:0">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
