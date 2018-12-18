@@ -1,12 +1,13 @@
 $(document).ready(function() {
- $("#validate").click(function(event){
+ $(".validate").click(function(event){
+	 console.log(event);
      //on vide le résultat précédent
     $("#results").empty();
     //récupération de l'id du compte pour l'envoyer au webService
-    var id = '${savingAccount.id}' || '${currentAccount.id}';
-    console.log(id);
+    var idAccount = event.currentTarget.childNodes[0].innerHTML;
+    console.log(idAccount);
     var send = {
-        id : id
+        "id" : idAccount
     };
     console.log(send);
     var send = JSON.stringify(send);
@@ -19,11 +20,13 @@ $(document).ready(function() {
         data: send,
         dataTye:'json'
     }).done(function(object) {
+    	console.log(object)
         if(object.isOK) {
             $("#results").append($("<h5 id='response_OK'>"+object.message+"</h5>"));
         } else {
             $("#results").append($("<h5 id='response_notOK'>"+object.message+"</h5>"));
         }
+    	
     });
  });
 })

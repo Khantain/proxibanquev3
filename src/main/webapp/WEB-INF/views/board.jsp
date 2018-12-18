@@ -11,6 +11,7 @@
 <meta name="author" content="">
 <title>ProxiBanque SI</title>
 
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,11 +29,13 @@
 	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
 	rel='stylesheet' type='text/css'>
 
+
 <!-- Custom styles for this template -->
 <link href="css/agency.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
 <script src="js/jquery.js"> </script>
+ <script src="js/agency.min.js"></script>  
 <script src="js/checkbook_verif.js"> </script>
 
 </head>
@@ -60,6 +63,7 @@
 						<button class="button" style="margin-top : 50px;">Faire un virement</button>
 					</a>
 				</div>
+								<div id="results"> </div>
 		<div class="account-list">
 				<div class="left-list">
 				<h2>Liste des comptes courant </h2>
@@ -91,7 +95,8 @@
 									</a>
 								</td>
 								<td class="balance">
-										<button class="button" id="validate">Demande chéquier</button>
+										<button class="button validate"><span id="span" style="display:none">${currentAccount.id}</span>
+										Demande chéquier</button>
 								</td>
 								<td class="balance">
 									<a href="card.html?id=${currentAccount.id}">
@@ -99,7 +104,7 @@
 									</a>
 								</td>
 						</tr>
-							<div id="results"> </div>
+							
 					</c:forEach>
 					</table>
 					</c:if>
@@ -125,11 +130,13 @@
 								<td class="balance">${savingAccount.balance}</td>
 								<td class="balance">${savingAccount.openDate}</td>
 								<td class="balance">
-										<button class="button" id="validate">Demande chéquier</button>
+										<button class="button validate"><span style="visibility:hidden">${savingAccount.id}</span>
+										Demande chéquier</button>
 								</td>
 								
 							</tr>
-							<div id="results"> </div>
+			
+							<span id="span" style="visibility:hidden">${savingAccount.id}</span>
 						</c:forEach>
 					</table>
 					</c:if>
