@@ -19,8 +19,7 @@ import fr.formation.proxi3.persistence.ClientDao;
  */
 public class ClientService {
 
-	private static final ClientService INSTANCE = new ClientService(AccountDao.getInstance(), ClientDao.getInstance(),
-			BankCardDao.getInstance());
+	private static final ClientService INSTANCE = new ClientService(ClientDao.getInstance());
 	private ClientDao daoClient;
 	private Logger logger = Logger.getLogger(ClientService.class.getName());
 
@@ -36,7 +35,7 @@ public class ClientService {
 	public ClientService() {
 	}
 
-	public ClientService(AccountDao daoAccount, ClientDao daoClient, BankCardDao daoCard) {
+	public ClientService(ClientDao daoClient) {
 		this.daoClient = daoClient;
 	}
 

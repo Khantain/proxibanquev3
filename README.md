@@ -32,13 +32,13 @@ Selectionnez l'installation à 313Mo. Bien vérifier que MySQL Workbench est ins
 
 Exécution. 
 
-Afin de deployer l'application ProxiBanque, veuillez coller l'archive "proxibanque3_Sarah_Quentin.war" dans le dossier webapps de votre dossier apache-tomcat-8.5.35. 
+Afin de déployer l'application ProxiBanque, veuillez coller l'archive "proxibanque3_Sarah_Quentin.war" dans le dossier webapps de votre dossier apache-tomcat-8.5.35. 
 Ensuite, allez dans le dossier bin et double cliquez sur le fichier "startup.bat". Attendre qu'un dossier proxibanquev3 apparaisse dans le dossier webapps de Tomcat.
 Veuillez ensuite lancer MySQL Workbench et créer un nouveau schéma nommé "proxibanquev3" (grâce à la 4ème icone en haut en forme de base de données). Ensuite, selectionner "Server" dans le menu supérieur puis "Data import". 
-Selectionner l'option "Import from Self-Contained File et renseigner le chemin vers le fichier str.sql fourni. indiquer "proxibanquev3" dans "Default Target Schema". 
+Sélectionner l'option "Import from Self-Contained File et renseigner le chemin vers le fichier str.sql fourni. indiquer "proxibanquev3" dans "Default Target Schema". 
 Enfin, répéter l'opération précédente avec le script "data.sql" fourni afin d'importer les données proprement dites.
 
-Pour lancer l'application, lancer chrome et rentrer l'adresse suivante : http://localhost:8080/proxibanquev2.
+Pour lancer l'application, lancer chrome et rentrer l'adresse suivante : http://localhost:8080/proxibanquev3
 
 Bonne navigation !!!
 
@@ -56,7 +56,8 @@ Il existe actuellement les clients suivants dans la base de données de l'applic
 
 Une fois connecté sous le nom d'un client, il sera possible d'explorer l'ensemble des possibilités de l'application grâce aux différents boutons.
 
-/!\remarque importante/!\ pour les options de retrait, le retrait liquide est limité à 300 € et le virement entre comptes est limité à 900€.
+/!\remarque importante/!\ pour les options de retrait, le retrait liquide est limité à 300 € et le virement entre comptes est limité à 900€. De plus, l'application générera une erreur en cas de validation avec un montant vide !!!
+Enfin, les retraits et transferts de montants à virgules génèrent des résultats inexacts.
 
 Une fois que votre usage de l'application touche à son terme, lancez le fichier "shutdown.bat" dans le même dossier que "startup.bat"(Apache Tomcat/bin).
 
