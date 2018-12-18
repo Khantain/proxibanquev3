@@ -51,7 +51,7 @@ public class TransferServlet extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		boolean notOk = AccountService.getInstance().makeWithdrawal(id, value);
 		req.setAttribute("bool",notOk);
-		// Renvoyer à board.jsp + boolean afficheer div
-		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorTransfer.jsp").forward(req, resp);
+	//	resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}
 }

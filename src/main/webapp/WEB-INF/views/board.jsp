@@ -71,15 +71,8 @@
 		</a>
 	</div>
 	<div id="results"></div>
-	<c:if test="${not bool}">
-		<h4 style="color: green;">Transfert effectué avec succès !</h4>
-	</c:if>
-
-	<c:if test="${bool}">
-		<h4 style="color: red;">Montant incorrect</h4>
-	</c:if>
 	<div class="account-list">
-		<div class="left-list">
+	<div class="left-list">
 			<h2>Liste des comptes courant</h2>
 			<c:if test="${empty currentAccounts}">
 				<h4>Aucun compte associé à ce client.</h4>
@@ -108,10 +101,7 @@
 									<button class="button">Retrait</button>
 							</a></td>
 							<td class="balance">
-								<button class="button validate">
-									<span id="span" style="display: none">${currentAccount.id}</span>Demande
-									chéquier
-								</button>
+								<button class="button validate"><span id="span" style="display: none">${currentAccount.id}</span>Demande chéquier</button>
 							</td>
 							<td class="balance"><a
 								href="card.html?id=${currentAccount.id}">
@@ -123,6 +113,7 @@
 				</table>
 			</c:if>
 		</div>
+		
 		<div class="right-list">
 
 			<h2>Liste des comptes epargne</h2>
@@ -144,9 +135,7 @@
 							<td class="balance">${savingAccount.balance}</td>
 							<td class="balance">${savingAccount.openDate}</td>
 							<td class="balance">
-								<button class="button validate">
-									<span style="display: none">${savingAccount.id}</span>Demande
-									chéquier
+								<button class="button validate"><span style="display: none">${savingAccount.id}</span>Demande chéquier
 								</button>
 							</td>
 
@@ -157,7 +146,7 @@
 				</table>
 			</c:if>
 		</div>
-	</div>
+		</div>
 	<div class="footer-button">
 		<a href="index.html">
 			<button class="button">Retour à l'accueil</button>
