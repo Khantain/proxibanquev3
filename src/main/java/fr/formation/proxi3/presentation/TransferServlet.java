@@ -48,7 +48,9 @@ public class TransferServlet extends HttpServlet {
 		Integer compteACrediter = Integer.parseInt(req.getParameter("compteACrediter"));
 
 		AccountService.getInstance().makeTransfer(compteADebiter, compteACrediter, value);
-		
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		boolean notOk = AccountService.getInstance().makeWithdrawal(id, value);
+		req.setAttribute("bool",notOk);
 		// Renvoyer à board.jsp + boolean afficheer div
 		resp.sendRedirect(this.getServletContext().getContextPath() + "/board.html");
 	}

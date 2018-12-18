@@ -35,6 +35,10 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/deco_name.jsp"></jsp:include>
+	<div class="top_left" style="float:left" >
+			<a href="/proxibanquev3/board.html"> 
+			<button class="button"> Accueil</button> </a>
+</div>
 	<section class="head"></section>
 	<h1 class="page-title">Ajout de la carte bancaire pour ${client.firstname} ${client.lastname}</h1>
 	<div class="form-cont">

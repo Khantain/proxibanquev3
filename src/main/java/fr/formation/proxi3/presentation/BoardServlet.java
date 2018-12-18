@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.formation.proxi3.metier.entity.Account;
 import fr.formation.proxi3.metier.entity.Client;
 import fr.formation.proxi3.metier.entity.CurrentAccount;
+import fr.formation.proxi3.metier.service.AccountService;
 
 /**
  * Classe servlet gérant les requetes arrivant sur /board.html qui sera la page
