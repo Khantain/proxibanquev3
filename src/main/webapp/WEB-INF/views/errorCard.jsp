@@ -54,11 +54,11 @@
 		</div>
 		
 		<c:if test="${bool}">
-		<h4 style="color:green;">Demande de nouvelle carte validée!</h4>
+		<h4 id="response_OK">Demande de nouvelle carte validée!</h4>
 		</c:if>
 		
 		<c:if test="${not bool}">
-		<h4 style="color: red;"> Impossible d’effectuer le retrait, votre ancienne carte est encore valide.</h4>
+		<h4 id="response_notOK"> Impossible d’effectuer le retrait, votre ancienne carte est encore valide.</h4>
 		</c:if>
 		
 	</header>

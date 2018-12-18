@@ -70,14 +70,14 @@
 	<div id="results"></div>
 	<div class="account-list">
 	<div class="left-list">
-			<h2>Liste des comptes courant</h2>
+			<h2>Liste des comptes courants</h2>
 			<c:if test="${empty currentAccounts}">
 				<h4>Aucun compte associé à ce client.</h4>
 			</c:if>
 			<c:if test="${not empty currentAccounts}">
 				<table>
 					<tr>
-						<th>Numero de compte</th>
+						<th>Numéro de compte</th>
 						<th class="balance">Solde en &#8364</th>
 						<th class="balance">Date d'ouverture</th>
 						<th class="balance"></th>
@@ -110,10 +110,9 @@
 				</table>
 			</c:if>
 		</div>
-		
-		<div class="right-list">
-
-			<h2>Liste des comptes epargne</h2>
+	
+	 <div class="right-list">
+			<h2>Liste des comptes épargnes</h2>
 			<c:if test="${empty savingAccounts}">
 				<h4>Aucun compte associé à ce client.</h4>
 			</c:if>
@@ -125,6 +124,7 @@
 						<th class="balance">Date d'ouverture</th>
 						<th class="balance"></th>
 						<th class="balance"></th>
+						
 					</tr>
 					<c:forEach var="savingAccount" items="${savingAccounts }">
 						<tr class="data">
@@ -137,8 +137,7 @@
 							</td>
 
 						</tr>
-
-						<span id="span" style="visibility: hidden">${savingAccount.id}</span>
+						<span id="span" style="display: none">${savingAccount.id}</span>
 					</c:forEach>
 				</table>
 			</c:if>

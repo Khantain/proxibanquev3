@@ -54,11 +54,11 @@
 		</div>
 		
 		<c:if test="${bool}">
-		<h4 style="color: green;">Retrait effectué avec succès !</h4>
+		<h4 id="response_OK">Retrait effectué avec succès !</h4>
 	</c:if>
 
 	<c:if test="${not bool}">
-		<h4 style="color: red;">Erreur: opération impossible</h4>
+		<h4 id="response_notOK">Erreur: opération impossible</h4>
 	</c:if>
 
 		

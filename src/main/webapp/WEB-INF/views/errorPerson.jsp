@@ -49,7 +49,7 @@
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
-			<h4 style="color: red;">Erreur. Veuillez vous adresser à un conseiller</h4>
+			<h4 id="response_notOK">Erreur. Veuillez vous adresser à un conseiller</h4>
 		</div>
 	</header>
 

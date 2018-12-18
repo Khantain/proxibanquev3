@@ -61,7 +61,7 @@
 			<form method="POST" action="">
 					<div class="account-list">
 					<div class="left-list">
-					<h2>Sélectionner le compte à débiter</h2>
+					<h4>Sélectionner le compte à débiter<h4>
 					<table>
 						<tr>
 							<th>Numero de compte</th>
@@ -81,7 +81,7 @@
 				</div>
 
 				<div class="right-list">
-					<h2>Sélectionner le compte à débiter</h2>
+					<h4>Sélectionner le compte à créditer</h4>
 					<table>
 						<tr>
 							<th>Numero de compte</th>

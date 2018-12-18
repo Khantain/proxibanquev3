@@ -143,11 +143,11 @@ h4 {
 }
 
 .left-list{
-	width: 30%
+	width: 43%
 }
 
 .right-list{
-	width: 30%
+	width: 43%
 }
 
 /* style pour transfer.jsp */
@@ -222,3 +222,13 @@ h4 {
 	height: 2em;
 }
 
+#response_OK{
+	margin-top: 20px;
+	color: green;
+	text-align:center; 
+}
+#response_notOK{
+	margin-top: 20px;
+	color: red;
+	text-align:center; 
+}
