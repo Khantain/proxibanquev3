@@ -84,7 +84,7 @@
 								</td>
 								<td class="balance">
 									<a href="checkbook.html?id=${currentAccount.id}">
-										<button class="button">Demande chéquier</button>
+										<button class="button" id="validate">Demande chéquier</button>
 									</a>
 								</td>
 								<td class="balance">
@@ -119,7 +119,7 @@
 								<td class="balance">${savingAccount.openDate}</td>
 								<td class="balance">
 									<a href="checkbook.html?id=${savingAccount.id}">
-										<button class="button">Demande chéquier</button>
+										<button class="button" id="validate">Demande chéquier</button>
 									</a>
 								</td>
 								<td class="balance">

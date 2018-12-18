@@ -28,8 +28,14 @@ public class CheckBook {
 	@Column(name="receivingDate")
 	private LocalDate receivingDate;
 
+	public CheckBook() {
+	}
 	
-	
+	public CheckBook(LocalDate now, LocalDate plusDays) {
+		this.sendDate = now;
+		this.receivingDate = plusDays;
+	}
+
 	public Integer getId() {
 		return id;
 	}

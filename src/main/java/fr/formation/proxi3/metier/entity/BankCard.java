@@ -61,4 +61,6 @@ public class BankCard {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+
 }
